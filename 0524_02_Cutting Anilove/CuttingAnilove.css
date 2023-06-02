@@ -1,31 +1,34 @@
-
-* {
-    margin: 0;
-    padding: 0;
+header{
+    width: 100%;
+    background-color: #1c1c1c;
 }
-
+/* body{
+    width: 100%;
+} */
 .header{
+    width: 1280px;
+    height: 80px;
+    margin: auto;
     background-color: #1c1c1c;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 80px;
+   
 
 }
 
 .phone{
-   font-size: 20px;
-   margin: 20px;
-   display: flex;
+    font-size: 20px;
+    margin: auto 0;
+    display: flex;
     color: #fff;
     font-family: helvetica;
-    vertical-align: middle; 
     align-items: center;
     letter-spacing: 0.1em;
 }
 .fa-phone{
+    padding: 0px 10px 0 20px;
     color: chocolate;
-    margin:0 10px 0;
 
 }
 .tel{
@@ -39,7 +42,7 @@
 .icon-list{
     display: flex;
     align-items: center;
-    padding-right: 10px;
+    padding-right: 20px;
 }
 
 .icon{
@@ -59,25 +62,29 @@
 .NavArea{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 1280px;
     height: 100px;
     background-color: #fff;
-    margin: 10px 10px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed; */
+    position: sticky;
 }
 .NavLeft{
    display: flex;
    font-size: 40px;
    color: rgb(62, 62, 62); 
-   font-family:'Times New Roman', Times, serif;
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    align-items: center;
    padding-left: 30px;
 }
 .logo{
     padding: 15px;
+}
+.Name{
+    text-decoration: none;
+    color:#1c1c1c;
 }
 
 .NavMeddle{
@@ -122,64 +129,101 @@
 
 }
 .main-page-01{
-    
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     height: 800px;
-    background-image:url(/HW02Assets/asset\ 4.jpeg);
+    margin: auto;
+    background-image:url(./HW02Assets/asset\ 4.jpeg);
     background-size: cover;
-}
-.main-page-01-text{
-    align-items: center;   
+    align-content: center;
 
 }
+.main-page-01-text{
+    margin-left: 30px;
+    padding: 10px;
+}
 .main-page-01-text .sentence-01{
+    /* display: block; */
+    margin: 10px;
     color: #3a3a3a;
-    font-size:70px;
+    font-size:60px;
+    font-weight: 500;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .main-page-01-text .sentence-02{
+    /* display: block; */
+    margin: 10px;
     color: cornflowerblue;
     font-size: 120px;
+    font-weight: 500;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .main-page-01-text .sentence-03{
+    /* display: block; */
+    margin: 10px;
     color: #3a3a3a;
     font-size: 30px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .button-01{
-    display: inline-block;
-    padding: 30px 50px;
-    margin: 0 30px 0 0;
+    display: block;
+    margin: 10px;
+    margin-top: 50px;
     background-color: orange;
     font-size: 20px;
     color: #fff; 
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-decoration: none;
+    width: fit-content;
+    padding: 30px 50px;
 
 }
 .button-01:hover{
     background-color: #000;
 }
 .main-page-02{
-    width: 100%;
-    height: 800px;
-    display: flex;
-    justify-content: space-between;
+    width: 1280px;
     
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.pic{
+    height: 800px;
+    width: 40%;
+    margin-right: 10px;
+}
+
+.main-page-02-text{
+    width: calc(50% - 30px);
+    margin: 15px;
+    padding: 50px;
+    box-sizing:border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    /* background-color: #fa1; */
 }
 
 .main-page-02-text .sentence-01{
+    display: block;
+    margin-bottom: 20px;
     color: #3a3a3a;
-    font-size:70px;
+    font-size:50px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .main-page-02-text .sentence-02{
+    display: block;
+    margin-bottom: 20px;
     color: cornflowerblue;
-    font-size: 50px;
+    font-size: 30px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .main-page-02-text .sentence-03{
+    display: block;
+    margin-bottom: 0px;
     color: #3a3a3a;
     text-align:justify;
     font-size: 20px;
@@ -225,28 +269,26 @@
 }
 
 .card-1{
-    background-image: url(/HW02Assets/asset\ 5.jpeg);
+    background-image: url(./HW02Assets/asset\ 5.jpeg);
     background-size: auto;
 }
 .card-1:hover{
-background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(/HW02Assets/asset\ 5.jpeg);  
+background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(./HW02Assets/asset\ 5.jpeg);  
 }
 .card-2{
-    background-image: url(/HW02Assets/asset\ 6.jpeg);
+    background-image: url(./HW02Assets/asset\ 6.jpeg);
     background-size: cover;
-    
 }
 .card-2:hover{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(/HW02Assets/asset\ 6.jpeg);  
-    color:chocolate;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(/HW02Assets/asset\ 6.jpeg); 
     transition: 0.1s;  
     }
 .card-3{
-    background-image: url(/HW02Assets/asset\ 7.jpeg);
+    background-image: url(./HW02Assets/asset\ 7.jpeg);
     background-size: cover;
 }
 .card-3:hover{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(/HW02Assets/asset\ 7.jpeg);   
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(./HW02Assets/asset\ 7.jpeg);   
      
     }
 .card-1-p:hover{color:chocolate;
