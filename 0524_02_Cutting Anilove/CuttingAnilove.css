@@ -293,7 +293,7 @@ background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(./HW02As
     background-size: cover;
 }
 .card-2:hover{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(/HW02Assets/asset\ 6.jpeg); 
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url(./HW02Assets/asset\ 6.jpeg); 
     transition: 0.1s;  
     }
 .card-3{
