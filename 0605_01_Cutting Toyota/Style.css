@@ -138,13 +138,14 @@ p{
     margin: 210px 80px 10px;
     z-index: 3;
 }
-/* .card:nth-child(even) .text-box-02{
-    margin: 
+
+.safty .text-box-02{
+    margin: 210px 10px 20px;
     z-index: 3;
-} */
+}
 
 .confort .text-box-02{
-    margin: 185px 10px 20px;
+    margin: 185px 50px 20px;
     z-index: 3;
 }
 
