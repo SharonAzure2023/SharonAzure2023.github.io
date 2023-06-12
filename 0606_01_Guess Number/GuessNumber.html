@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess Number v1.1</title>
+    <title>Guess Number v1.2</title>
     <!-- v1.1修正
         加入數字判斷->修正數字+非數字也可繼續遊戲的bug;
         加入未輸入的提醒-->
+    <!-- 1.2修正
+        加入數字判斷->小數負數也輸入提醒;
+    -->
+
     
     <style>
         * {
@@ -90,7 +94,7 @@
 
     <script>
 
-        let ansNum = Math.round(Math.random() * 99);
+        const ansNum = Math.round(Math.random() * 99);
         document.write("<br>公測版，先大家看答案去試試<br>答案:  " + ansNum)
         // 解除上行註解可以show答案在html上
 
@@ -143,12 +147,16 @@
             
             while (true) {
                 let guessNum = myInput.value;
-
+                let firstNum = guessNum.charAt(0);
+                
+                //判斷空值
                 if (guessNum == ""){
-                    myOutput.innerText = "你沒輸入"
+                    myOutput.innerText = "你沒輸入數字"
                 }
-                else if (isNaN(guessNum) == true){
-                    myOutput.innerText = "請輸入數字喔"
+
+                //判斷非正整數
+                else if (isNaN(guessNum) == true || firstNum =="0" || guessNum.includes(".")|| guessNum.includes("-")){
+                    myOutput.innerText = "請輸入非0開頭的正整數"
                     myInput.value = ``;
                 }
                 else if (guessNum == ansNum) {
@@ -158,7 +166,8 @@
                     gameOver.disabled = true;
                     haha.disabled = true;
                 }   
-                else if (guessNum < nMin || guessNum > nMax) {
+
+                else if (guessNum <= nMin || guessNum >= nMax) {
                     myOutput.innerText = "超出範圍" + nMin + "-" + nMax;
                     myInput.value = ``;
                 }
