@@ -4,58 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guess Number v1.1</title>
+    <!-- v1.1修正
+        加入數字判斷->修正數字+非數字也可繼續遊戲的bug;
+        加入未輸入的提醒-->
+    
     <style>
         * {
             margin: 0;
             padding: 0;
         }
-        .guessNum {
-            width:680px;
+        .game{
+            width: 320px;
+            height: 195px;
             margin: auto;
+            padding: 10px;
+            border: #ede1e3 solid 3px;
+            border-radius: 5px;
+            background-color: #e2d2e2;
         }
         form {
-            width: 308px;
-            height: 40px;
-            padding: 5px;
+            padding: 10px;
             font-size: 30px;
-            background-color: #faa;
-            border: #999 solid 1px;
             border-radius: 3px;
-            margin: 10px 0;
+            margin: auto;
             text-align: center;
+            /* background-color: blueviolet; */
+            height: 70px;
+        }
+        output {
+            display: block;
+            font-size: 28px;
+            margin:auto;
+            margin-top: 15px;
+            background-color: #e3e2b4;
+            border: #e3e2b4 solid 2px;
+            border-radius: 5px;
+        }
+        .input-area {
+            width: 320px;
+            margin: auto;
+            margin-top: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
         }
         input{
-            margin: auto;
-            font-size: 30px;
+            font-size: 28px;
+            border: #ede1e3 solid 3px;
+            border-radius: 5px;
         }
         button{
-            font-size: 30px;
+            font-size: 28px;
+            padding: 2px;
+            border: #ede1e3 solid 3px;
+            border-radius: 5px;
+            background-color:#bfc8d7;
+        }
+
+        .btn-area {
+            width: 320px;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
         }
     </style>
 
 </head>
 
 <body>
-    <div class="guessNum">
-        <input type="text" name="input-num" size="13px" placeholder="在此輸入數字" >
+    <div class="game">
+    <div class="input-area">
+        <input type="text" name="input-num" size="13px" placeholder="在此輸入數字">
         <button class="submit">GO</button>
-        <form action="">
-            <output>範圍1-100</output>
-        </form>
-        <div class="btn">
-            <button class="gameover">偷看答案</button>
-            <button class="reset">重來</button>
-            <button class="haha">我不玩了</button>
-        </div>
+    </div>
+    <form action="">
+        <output>範圍0-100</output>
+    </form>
+    <div class="btn-area">
+        <button class="gameover">偷看答案</button>
+        <button class="reset">重來</button>
+        <button class="haha">我不玩了</button>
+    </div>
     </div>
 
     <script>
 
-        let ansNum = Math.round(Math.random() * 100)+1;
-        // document.write("產生隨機亂數 = ansNum: " +ansNum) 
+        let ansNum = Math.round(Math.random() * 99);
+        document.write("<br>公測版，先大家看答案去試試<br>答案:  " + ansNum)
         // 解除上行註解可以show答案在html上
-        
+
         //取得需要的DOM
         let myInput = document.querySelector('input')
         let submit = document.querySelector('.submit')
@@ -63,8 +101,9 @@
         let gameOver = document.querySelector('.gameover')
         let reset = document.querySelector('.reset')
         let haha = document.querySelector('.haha')
-        let nMin = 1;
+        let nMin = 0;
         let nMax = 100;
+
 
         //用console.log確認型別
         console.log(typeof ansNum)
@@ -79,16 +118,6 @@
         console.log(reset)
         console.log(haha)
 
-        //輸入後點GO button可以判斷
-        submit.addEventListener("click", adjustment);
-
-        //輸入後按enter可以判斷
-        myInput.addEventListener("keydown", function (e) {
-            if( e.keyCode === 13 ){
-                adjustment();
-            }
-        })
-        
         gameOver.addEventListener("click", function () {
             myOutput.innerText = ansNum;
         })
@@ -99,22 +128,38 @@
             myOutput.innerText = "弱";
         })
 
-        function adjustment(){
-            let guessNum = parseInt(myInput.value);
+        //輸入後點GO button可以判斷
+        submit.addEventListener("click", adjustment);
 
-            if (guessNum == ansNum) {
-                myOutput.innerText = "猜中了 " + ansNum;
-                submit.disabled = true;
-                myInput.disabled = true;
-                gameOver.disabled = true;
-                haha.disabled = true;
+        //輸入後按enter可以判斷
+        myInput.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+                adjustment();
 
             }
+        })
+
+        function adjustment() {
             
-            while(guessNum != ansNum) {
-                
-                if (guessNum < nMin || guessNum > nMax ) {
-                    myOutput.innerText = "超出範圍"+ nMin + "-" + nMax;
+            while (true) {
+                let guessNum = myInput.value;
+
+                if (guessNum == ""){
+                    myOutput.innerText = "你沒輸入"
+                }
+                else if (isNaN(guessNum) == true){
+                    myOutput.innerText = "請輸入數字喔"
+                    myInput.value = ``;
+                }
+                else if (guessNum == ansNum) {
+                    myOutput.innerText = "猜中了 " + ansNum;
+                    submit.disabled = true;
+                    myInput.disabled = true;
+                    gameOver.disabled = true;
+                    haha.disabled = true;
+                }   
+                else if (guessNum < nMin || guessNum > nMax) {
+                    myOutput.innerText = "超出範圍" + nMin + "-" + nMax;
                     myInput.value = ``;
                 }
                 else if (guessNum > ansNum) {
@@ -127,20 +172,15 @@
                     nMin = guessNum
                     myInput.value = ``;
                 }
-                
-                //如何判斷input內為空字串??
-                // else if (guessNum = 'null'){
-                //     myOutput.innerText = "你沒輸入"
-                //     myInput.value = ``;
-                // }
                 else {
-                    myOutput.innerText = "請輸入數字" ;
+                    myOutput.innerText = "你找到bug請洽開發者";
                     myInput.value = ``;
                 }
                 break;
             }
         }
-            
+
+
     </script>
 
 </body>
