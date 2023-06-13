@@ -1,0 +1,164 @@
+section{
+    border-top: #ccc solid 1px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.8;
+    transition: 0.5s;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+}
+.container{
+    max-width: 720px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+}
+.item-area{
+    width: 96%;
+    margin: 3% 2%;
+    /* padding: 10px; */
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+H4,H2{
+    font-size: 22px;
+    color: #111;
+    font-weight: 700;
+    line-height: 1.5;
+}
+H4 span{
+    font-size: 12px;
+    line-height: 22px;
+    color: #777;
+    margin-left: 10px;
+
+}
+.link a{
+    /* width: 50%; */
+    color: coral;
+    direction: rtl;
+}
+.main-card-url{
+    width: 100%;
+    margin-bottom: 3%;
+}
+.main-card{
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-card-text{
+    width: 96%;
+    margin: 2%;
+    /* padding: 10px; */
+}
+/* .main-card-title{
+    width: 50%;
+}
+.main-card-excerpt{
+    width: 50%;
+} */
+
+.date{
+    width: 96%;
+    margin: 2%;
+    /* padding: 10px; */
+}
+p{
+    color: #111;
+    line-height: 1.5;
+}
+
+.sub-card-area{
+    display: flex;
+    flex-wrap: wrap;
+}
+.sub-card-url{
+    width: 46%;
+    margin: 0% 2% 8%;
+    /* box-sizing: border-box;
+    border: #fa0 solid 2px; */
+}
+.card-dir{
+    color: #111;
+    font-size: 16px;
+    margin: 0% 2% 3%;
+}
+.sub-card-pic{
+    width: 100%;
+    aspect-ratio: 2/1;
+}
+.sub-card-pic img{
+    width: 100%;
+    border-radius:5%;
+}
+H3{
+    font-size: 18px;
+    color: #111;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.date{
+    color: #555;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 10px;
+    margin-left: 0;
+}
+section:nth-child(2n){
+    flex-direction: row-reverse;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        max-width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main-card-url{
+        width: 50%;
+    }
+    .sub-card-area{
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main-card .card-dir{
+        color: #111;
+        font-size: 16px;
+        margin: 0 2% 1%;
+    }
+    .main-card-pic{
+        width: 96%;
+        margin: 0 2%;
+    }
+    .main-card-pic img{
+        border-radius: 3%;
+    }
+    .main-card-text{
+        display: flex;
+
+    }
+    .main-card-title{
+        width: 50%;
+        margin-right: 3%;
+    }
+    .main-card-excerpt{
+        width: 50%;
+        margin-left: 3%;
+    }
+    .sub-card-pic{
+        width: 100%;
+        aspect-ratio: 1.5/1;
+    }
+    br{content:"";display:none}
+}
