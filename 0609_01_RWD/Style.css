@@ -1,5 +1,6 @@
 section{
     border-top: #ccc solid 1px;
+    font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
 }
 a{
     text-decoration: none;
@@ -24,29 +25,38 @@ img {
 .item-area{
     width: 96%;
     margin: 3% 2%;
-    /* padding: 10px; */
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-H4,H2{
-    font-size: 22px;
+H2{
+    font-size: 24px;
     color: #111;
     font-weight: 700;
     line-height: 1.5;
 }
+H4{
+    font-size: 26px;
+    color: #111;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-right: 10px;
+}
 H4 span{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 22px;
     color: #777;
-    margin-left: 10px;
-
+    font-family: sans-serif;
+    font-weight: 100;
 }
-.link a{
-    /* width: 50%; */
+.more{
+    margin: auto;
+    margin-right: 0;
+}
+.more a{
     color: coral;
-    direction: rtl;
+    direction: rtl;    
 }
 .main-card-url{
     width: 100%;
@@ -59,25 +69,18 @@ H4 span{
 .main-card-text{
     width: 96%;
     margin: 2%;
-    /* padding: 10px; */
 }
-/* .main-card-title{
-    width: 50%;
-}
-.main-card-excerpt{
-    width: 50%;
-} */
-
 .date{
     width: 96%;
     margin: 2%;
-    /* padding: 10px; */
 }
 p{
+    font-size: 13px;
+    font-weight: 500;
     color: #111;
     line-height: 1.5;
+    letter-spacing: 1px;
 }
-
 .sub-card-area{
     display: flex;
     flex-wrap: wrap;
@@ -85,13 +88,31 @@ p{
 .sub-card-url{
     width: 46%;
     margin: 0% 2% 8%;
-    /* box-sizing: border-box;
-    border: #fa0 solid 2px; */
 }
 .card-dir{
     color: #111;
-    font-size: 16px;
+    font-size: 12px;
     margin: 0% 2% 3%;
+    white-space:nowrap;
+    position: relative;
+    overflow: hidden;
+    vertical-align:bottom;
+}
+.card-dir img{
+    width: 7%;
+    height: auto;
+    vertical-align:middle;
+    margin-right: 5px;
+
+}
+.sub-card .card-dir::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 5em;
+    background-image: linear-gradient(to left, #fff, transparent);
 }
 .sub-card-pic{
     width: 100%;
@@ -102,7 +123,7 @@ p{
     border-radius:5%;
 }
 H3{
-    font-size: 18px;
+    font-size: 16px;
     color: #111;
     font-weight: 700;
     line-height: 1.5;
