@@ -41,7 +41,6 @@ H4{
     color: #111;
     font-weight: 700;
     line-height: 1.5;
-    margin-right: 10px;
 }
 H4 span{
     font-size: 14px;
@@ -182,4 +181,7 @@ section:nth-child(2n){
         aspect-ratio: 1.5/1;
     }
     br{content:"";display:none}
+    H4 span{
+        margin-left: 10px;
+    }
 }
