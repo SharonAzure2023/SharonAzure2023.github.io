@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Share</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row d-flex flex-wrap">
+            <!-- Pie chart -->
+            <div class="col-12 col-md-6 p-5">
+                <canvas id="mkShare"></canvas>
+            </div>
+            <!-- table -->
+            <div class="col-12 col-md-6 p-5">
+                <table class="table table-bordered table-striped">
+                    <!-- <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>公司名稱</th>
+                            <th>國別</th>
+                            <th>市佔率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>台積電</td>
+                            <td>台灣</td>
+                            <td>53.1%</td>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--bootstrap.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // 建立資料物件
+        const marketingShare = {
+            version: "v1.0",
+            publish: "2021/12/31",
+            titles: ["排名", "公司", "國別", "市佔率"],
+            data: [
+                { Rainking: 1, Name: "台積電", Country: "台灣", Ratio: 53.1 },
+                { Rainking: 2, Name: "三星電子", Country: "韓國", Ratio: 17.3 },
+                { Rainking: 3, Name: "聯電", Country: "台灣", Ratio: 7.2 },
+                { Rainking: 4, Name: "格羅方德", Country: "美國", Ratio: 6.1 },
+                { Rainking: 5, Name: "中芯國際", Country: "中國", Ratio: 5.3 },
+                { Rainking: 6, Name: "華虹半導體", Country: "中國", Ratio: 2.6 },
+                { Rainking: 7, Name: "力積電", Country: "台灣", Ratio: 1.8 },
+                { Rainking: 8, Name: "世界先進", Country: "台灣", Ratio: 1.4 },
+                { Rainking: 9, Name: "高塔半導體", Country: "以色列", Ratio: 1.4 },
+                { Rainking: 10, Name: "東部高科", Country: "韓國", Ratio: 1 }
+            ]
+        };
+
+
+        //DOM&宣告陣列
+        const table = document.querySelector('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        let companies = [];
+        let data = [];
+        let mkShare2dArray = [];
+
+        // for drawChart -- 4. forEach() 
+        marketingShare.data.forEach((item, i) => {
+            companies[i] = marketingShare.data[i].Name;
+            data[i] = marketingShare.data[i].Ratio;
+            // companies.push(item.Name);  也可
+            // data.push(item.Ratio);  也可
+            companies.push(item);
+            data.push(item);
+        })
+
+        //for table -- object => 2D Array
+        marketingShare.data.forEach(data => {
+            let values = Object.values(data);
+            mkShare2dArray.push(values);
+        });
+        console.log(mkShare2dArray)
+
+        window.onload = function () {
+            drawChart('pie', companies, data)
+            createThead(marketingShare.titles);
+            createTbody(mkShare2dArray);
+            table.append(thead, tbody);
+
+        }
+
+        //第二個參數為公司陣列, 第三個參數為資料陣列
+        function drawChart(chartType, companyArray, dataArray) {
+            //Pie Chart圓餅圖
+            let ctxPie = document.getElementById("mkShare");
+            var pieChart = new Chart(ctxPie, {
+                type: chartType,
+                data: {
+                    labels: companyArray,
+                    datasets: [{
+                        data: dataArray,
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255,75,50)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)',
+                            'rgb(255, 138, 64)',
+                            'rgb(142, 65, 64)',
+                            'rgb(59, 72, 64)'
+                        ]
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        fontSize: 26,
+                        text: '2021年全球晶圓代工市佔率%'
+                    },
+                    tooltips: {
+                        mode: 'point',
+                        intersect: true,
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: 'black',
+                        }
+                    }
+                }
+            });
+        }
+
+        function createThead() {
+            const tr = document.createElement('tr')
+            marketingShare.titles.forEach(x => {
+                const th = document.createElement('th')
+                th.innerText = x
+                tr.append(th)
+            })
+            thead.append(tr)
+        }
+
+        function createTbody() {
+            mkShare2dArray.forEach(x => {
+                const tr = document.createElement('tr');
+                x.forEach(y => {
+                    const td = document.createElement('td')
+                    td.innerText = y
+                    tr.append(td)
+                })
+                tbody.append(tr)
+            })
+        }
+
+        //Create2DArray for note 
+        function Create2DArray() {
+            // 1. for
+            for (let i = 0; i < marketingShare.data.length; i++) {
+                companies[i] = marketingShare.data[i].Name;
+                data[i] = marketingShare.data[i].Ratio;
+            }
+
+            //2. for...in - index
+            for (let idx in marketingShare.data) {
+                companies[idx] = marketingShare.data[idx].Name;
+                data[idx] = marketingShare.data[idx].Ratio;
+            }
+
+            // //3. for...of - item
+            for (let x of marketingShare.data) {
+                //3.1 companies[x.Rainking-1] = marketingShare.data[x.Rainking-1].Name;
+                // data[x.Rainking-1]= marketingShare.data[x.Rainking-1].Ratio;
+                // 3.2
+                companies.push(x.Name);
+                data.push(x.Ratio);
+            }
+
+            // 4. forEach() 
+            marketingShare.data.forEach((item, i) => {
+                companies[i] = marketingShare.data[i].Name;
+                data[i] = marketingShare.data[i].Ratio;
+                // companies.push(item.Name);  也可
+                // data.push(item.Ratio);  也可
+                companies.push(item);
+                data.push(item);
+            })
+
+        }
+    </script>
+
+
+</body>
+
+</html>
