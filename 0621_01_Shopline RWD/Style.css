@@ -1,0 +1,60 @@
+a{
+    text-decoration: none;
+}
+.textlink{
+    text-decoration:underline;
+
+}
+.navline{
+    position:sticky;
+}
+.kv {
+    background-image: linear-gradient(to bottom, #eff4ff, #bedbf1);
+}
+
+.special-list .container:nth-child(odd) .row {
+    flex-direction: row-reverse;
+}
+
+.special-list ul li::marker {
+    color: blue;
+}
+
+.slg,.service {
+    background-color: #eee;
+}
+
+.card-title {
+    text-decoration: none;
+}
+
+.note {}
+
+.box {
+    width: 80%;
+    border: 5px solid cornflowerblue;
+    border-bottom: 0;
+    border-radius: 50% 50% 0 0;
+    overflow: hidden;
+}
+
+
+.special-list .sptxt ul li {
+    width: 100%;
+}
+.brand-logo img{
+    opacity: 50%;
+}
+.brand-logo img:hover{
+    opacity: 100%;
+    transition: 0.2s;
+}
+@media screen and (min-width: 768px) {
+    .special-list .sptxt ul li {
+        width: 50%;
+    }
+
+    .special-list .sptxt {
+        width: 50%;
+    }
+}
