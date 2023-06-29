@@ -46,7 +46,8 @@
     }
 
     #record {
-      width: 500px;
+      width: 100%;
+      max-width: 500px;
       height: 555px;
       background-color: #e3e2b4;
       border: 5px solid #a2b59f;
@@ -62,7 +63,7 @@
 <body>
   <div class="container text-center">
     <div class="row">
-      <div class="game-area">
+      <div class="game-area col-12">
         <div class="name">
           <H1>1A2B Game</H1>
         </div>
@@ -75,7 +76,7 @@
           <input type="text" id="input" size="22px" placeholder="在此輸入不重複4個數字">
           <button type="button" id="check">Guess</button>
         </div>
-        <div id="record">
+        <div class="col-12" id="record">
           遊戲紀錄
         </div>
 
