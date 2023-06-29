@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1A2B Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .name {
+      color: #444;
+      margin: 20px;
+    }
+
+    button {
+      color: #444;
+      background-color: #f9d9ca;
+      width: fit-content;
+      margin: 5px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-weight: 700;
+    }
+
+    #check {
+      color: tomato;
+      padding: 3px 6px;
+      font-weight: 900;
+    }
+
+    input {
+      color: #444;
+      background-color: #deb3cf;
+      border-radius: 5px;
+
+    }
+
+    .game-area {
+      background-color: #bfc8d7;
+    }
+
+    #record {
+      width: 500px;
+      height: 555px;
+      background-color: #e3e2b4;
+      border: 5px solid #a2b59f;
+      border-radius: 25px;
+      margin: auto;
+      margin-bottom: 10px;
+      color: #444;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container text-center">
+    <div class="row">
+      <div class="game-area">
+        <div class="name">
+          <H1>1A2B Game</H1>
+        </div>
+        <div class="operate-area">
+          <button id="start">start</button>
+          <button id="show-answer">Show answer</button>
+          <button id="reset">reset</button>
+        </div>
+        <div class="input-area">
+          <input type="text" id="input" size="22px" placeholder="在此輸入不重複4個數字">
+          <button type="button" id="check">Guess</button>
+        </div>
+        <div id="record">
+          遊戲紀錄
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    window.onload = function () {
+      alert("請按start開始遊戲");
+    }
+
+    // //取DOM
+    let start = document.querySelector('#start');
+    let answer = document.querySelector('#show-answer');
+    let reset = document.querySelector('#reset');
+    let guess = document.querySelector('#check');
+    let guessInput = document.querySelector('#input');
+    let gameRecord = document.querySelector('#record');
+
+    //宣告全域使用的變數
+    let ans
+
+    //開始頁面按鍵設定
+    answer.disabled = true
+    reset.disabled = true
+    guess.disabled = true
+    guessInput.disabled = true
+
+    start.addEventListener('click', gameStart)
+    answer.addEventListener('click', showAnswer)
+    reset.addEventListener('click', gameReset)
+    guess.addEventListener('click', guessCheck)
+    guessInput.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13) { guessCheck(); }
+    })
+
+    function gameStart() {
+      start.disabled = true
+      answer.disabled = false
+      reset.disabled = false
+      guess.disabled = false
+      guessInput.disabled = false
+      generateAns()
+    }
+
+    function showAnswer() {
+      alert(`答案是 ${ans}`)
+    }
+
+    function gameReset() {
+      generateAns()
+      gameRecord.innerHTML = "遊戲紀錄"
+    }
+
+    function guessCheck() {
+      //排除輸入錯誤資訊, 須為4位數,不重複, 只有數字
+      let inputArr = guessInput.value;
+      if (inputArr.length === 4 && !isNaN(inputArr) && !multipleCheck()) {
+        adjustmentAndRecord()
+      }
+      else {
+        alert('請輸入不重複4個數字');
+        guessInput.value = ''
+      }
+    }
+
+
+    function adjustmentAndRecord() {
+      let a = 0
+      let b = 0
+      let ansArr = Array.from(ans); //Array.from(int) -> int to array
+      let inputArr = Array.from(guessInput.value);
+      for (let i = 0; i < 4; i++) {
+        if (inputArr[i] == ansArr[i]) {
+          a++
+        }
+        else if (ansArr.includes(inputArr[i])) {
+          b++
+        }
+      }
+
+      //Record
+      gameRecord.innerHTML += `<br>${guessInput.value}: ${a}A${b}B`
+      guessInput.value = '';
+
+      //Success
+      if (a == 4) {
+        alert(`過關，答案是 ${ans}`)
+      }
+
+    }
+
+    function generateAns() {
+      let ans = '';
+
+      while (ans.length < 4) {
+        let randomNum = Math.floor(Math.random() * 10); // 生成0到9之間的隨機數
+        if (!ans.includes(randomNum)) {
+          ans += randomNum
+        }
+      }
+      return ans;
+    }
+    ans = generateAns();
+    console.log(ans);
+
+    function multipleCheck() {
+      let checkArr = Array.from(guessInput.value)
+      console.log(checkArr)
+      for (let i = 0; i < checkArr.length; i++) {
+        for (let j = i + 1; j < checkArr.length; j++) {
+          if (checkArr[i] === checkArr[j]) {
+            return true
+          }
+        }
+      }
+      return false
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>
