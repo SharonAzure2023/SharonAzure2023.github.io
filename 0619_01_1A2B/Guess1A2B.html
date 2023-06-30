@@ -140,7 +140,8 @@
     function guessCheck() {
       //排除輸入錯誤資訊, 須為4位數,不重複, 只有數字
       let inputArr = guessInput.value;
-      if (inputArr.length === 4 && !isNaN(inputArr) && !multipleCheck()) {
+      console.log(typeof inputArr)
+      if (inputArr.length === 4 && !isNaN(inputArr) && !multipleCheck() && !inputArr.includes('-') && !inputArr.includes('.')) {
         adjustmentAndRecord()
       }
       else {
