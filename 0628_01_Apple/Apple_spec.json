@@ -1,0 +1,62 @@
+{
+    "iPad": {
+        "product":{
+            "productName":"iPad Air",
+            "baseImgUrl":"./pic/iPad/ipad-air-finish-unselect-gallery-1.jpg"
+        },
+        "outWard":[
+            {"color": "spacegray","ImgUrl":"./pic/iPad/ipad-air-finish-spacegray.jpg"},
+            {"color": "blue","ImgUrl":"./pic/iPad/ipad-air-finish-blue.jpg"},
+            {"color": "pink","ImgUrl":"./pic/iPad/ipad-air-finish-pink.jpg"},
+            {"color": "purple","ImgUrl":"./pic/iPad/ipad-air-finish-purple.jpg"},
+            {"color": "starlight","ImgUrl":"./pic/iPad/ipad-air-finish-starlight.jpg"}
+        ],
+        "Spec1":[
+            {"storage":"64GB","price": 19900},
+            {"storage":"256GB","price": 24900}
+        ],
+        "Spec2":[
+            {"network": "Wi-Fi","price": 0},
+            {"network": "Cellular","price": 5000}
+        ]
+    },
+    "iPhone": {
+        "product":{
+            "productName":"iPhone SE",
+            "baseImgUrl":"./pic/iPhone/iphone-se-finish-unselect-gallery-1.jpg"
+        },
+        "outWard":[
+            {"color": "midnight","ImgUrl":"./pic/iPhone/iphone-se-midnight.jpg"},
+            {"color": "starlight","ImgUrl":"./pic/iPhone/iphone-se-starlight.jpg"},
+            {"color": "red","ImgUrl":"./pic/iPhone/iphone-se-red.jpg"}
+        ],
+        "Spec1":[
+            {"storage":"64GB","price": 14900},
+            {"storage":"128GB","price": 16500},
+            {"storage":"256GB","price": 20000}
+        ]
+    },
+    "Mac": {
+        "product":{
+            "productName":"MacBook Air 15inch",
+            "baseImgUrl":"./pic/Mac/macbook-air-digitalmat-gallery-6-202206.png"
+        },
+        "outWard":[
+            {"color": "midnight","ImgUrl":"./pic/Mac/mba15-midnight.jpg"},
+            {"color": "starlight","ImgUrl":"./pic/Mac/mba15-starlight.jpg"},
+            {"color": "spacegray","ImgUrl":"./pic/Mac/mba15-spacegray.jpg"},
+            {"color": "silver","ImgUrl":"./pic/Mac/mba15-silver.jpg"}
+        ],
+        "Spec1":[
+            {"storageRAM":"8GB","price": 42900},
+            {"storageRAM":"16GB","price": 48900},
+            {"storageRAM":"24GB","price": 54900}
+        ],
+        "Spec2":[
+            {"storageSSD": "256GB","price": 0},
+            {"storageSSD": "512GB","price": 6000},
+            {"storageSSD": "1TB","price": 12000},
+            {"storageSSD": "2TB","price": 24000}
+        ]
+    }
+}

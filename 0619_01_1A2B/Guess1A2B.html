@@ -125,7 +125,7 @@
       reset.disabled = false
       guess.disabled = false
       guessInput.disabled = false
-      generateAns()
+      ans = generateAns()
     }
 
     function showAnswer() {
@@ -133,7 +133,7 @@
     }
 
     function gameReset() {
-      generateAns()
+      ans = generateAns()
       gameRecord.innerHTML = "遊戲紀錄"
     }
 
@@ -177,7 +177,7 @@
     }
 
     function generateAns() {
-      let ans = '';
+      ans = '';
 
       while (ans.length < 4) {
         let randomNum = Math.floor(Math.random() * 10); // 生成0到9之間的隨機數
@@ -187,8 +187,8 @@
       }
       return ans;
     }
-    ans = generateAns();
-    console.log(ans);
+    // ans = generateAns();
+    // console.log(ans);
 
     function multipleCheck() {
       let checkArr = Array.from(guessInput.value)
