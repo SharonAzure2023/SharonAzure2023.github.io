@@ -37,6 +37,8 @@ function initialize(product) {
   let picArea = document.querySelector('.pic-area')
   picArea.classList.remove('col-12')
   picArea.classList.add('col-12', 'col-sm-8')
+  pic.classList.remove('w-50')
+  pic.classList.add('w-100')
   //匯入產品主圖
   pic.src = (products[product].product.baseImgUrl) //引入的json[引入的"iPad"].product.baseImgUrl
   //產品名稱&最低價格

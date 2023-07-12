@@ -7,6 +7,12 @@
     <title>My Calendar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+    </style>
 </head>
 
 <body>
@@ -118,7 +124,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Date</span>
                                     <input id="edit-addon1" type="text" class="form-control" placeholder=""
-                                        aria-label="Username" aria-describedby="basic-addon1" disabled>
+                                        aria-label="Username" aria-describedby="basic-addon1" data-index="" disabled>
                                 </div>
                                 <!-- Title -->
                                 <div class="input-group mb-3">
@@ -172,7 +178,7 @@
         let today = new Date()
         let year = today.getFullYear()
         let month = today.getMonth()
-        let day = 1
+
 
 
         //事件
@@ -235,18 +241,57 @@
             }
 
             //寫入localstorage
-            setLocalStorage(key,dataArr)
+            setLocalStorage(key, dataArr)
 
             addModal.hide()
+            renderDate()
         })
 
         // //edit modal刪除
-        eddon4Btn.addEventListener('click', function(){
+        eddon4Btn.addEventListener('click', function () {
+
+            //刪除物件的日期
+            let editDate = eddon1DOM.value
+            //刪除哪一筆
+            let index = eddon1DOM.getAttribute('data-index')
+            //取得localstorage data
+            let data = getLocalStorage(editDate)
+
+            //刪除資料
+            data.splice(index, 1)
+            console.log(data)
+            setLocalStorage(editDate, data)
+            editModal.hide()
+            renderDate()
 
         })
 
-        // //edit modal編輯
-        // eddon5Btn.addEventListener('click', function(){})
+        //edit modal編輯
+        eddon5Btn.addEventListener('click', function () {
+            //取得修改的內容
+            let editDate = eddon1DOM.value
+            let editTitle = eddon2DOM.value
+            let editContent = eddon3DOM.value
+
+            //取得修改的index
+            let index = eddon1DOM.getAttribute('data-index')
+
+            //取得localstorage data
+
+            let data = getLocalStorage(editDate)
+            //把形成塞進物件
+            let obj = {
+                title: editTitle,
+                content: editContent
+            }
+            console.log(obj)
+
+            //更新資料
+            data[index] = obj
+            setLocalStorage(editDate, data)
+            editModal.hide()
+            renderDate()
+        })
 
 
 
@@ -258,6 +303,7 @@
         //Render
         function renderDate() {
             let day = 1
+            let nextMonthDate =1
             tbodyDOM.innerHTML = ''
             yearMonthDOM.innerText = `${year}年${month + 1}月` //Jan. = 0
 
@@ -265,10 +311,10 @@
 
             //第一天禮拜幾
             let dayOfMonth = new Date(year, month, 1).getDay()
-            console.log(dayOfMonth)
+            console.log("禮拜" + dayOfMonth)
             //這個月幾天
             let dateOfMonth = new Date(year, month + 1, 0).getDate()
-            console.log(dateOfMonth)
+            console.log(dateOfMonth + '天')
 
             //這個月有幾個禮拜
             // 這個月加上 上個月放到本月的天數
@@ -277,23 +323,75 @@
             let weeks = Math.ceil(allDays / 7)
             console.log(weeks)
 
+            //上個月天數
+            let dateOfLastMonth = new Date(year, month, 0).getDate()
+            console.log('上個月'+dateOfLastMonth + '天')
+
+            //上個月會印在這個月月曆的起始日
+            let dateOfLastMonthWeek= dateOfLastMonth-dayOfMonth+1
+
             //tr
             for (i = 0; i < weeks; i++) {
                 let trDOM = document.createElement('tr');
                 trDOM.classList.add('text-center')
                 for (j = 0; j < 7; j++) {
                     let tdDOM = document.createElement('td')
-                    if (i === 0 && j < dayOfMonth || day > dateOfMonth) {
-                        tdDOM.innerText = '';
+
+                    if (i === 0 && j < dayOfMonth) {
+                        if(dateOfLastMonthWeek<=dateOfLastMonth)
+                        tdDOM.classList.add('text-secondary')
+                        tdDOM.innerText = dateOfLastMonthWeek;
+                        dateOfLastMonthWeek++
                     }
-                    else {
+
+
+                    else if (day <= dateOfMonth) {
                         tdDOM.innerText = day
+
+                        //查詢日期是否有行程
+                        let key = `${year}-${month + 1}-${day}`
+                        let data = getLocalStorage(key)
+                        if (data != null) {
+                            let ulDOM = document.createElement("ul")
+                            //印出TODO
+                            data.forEach((item, index) => {
+                                let liDOM = document.createElement('li')
+                                liDOM.innerText = item.title
+
+                                //按下TODO事件綁定
+                                let editDay = day
+                                liDOM.addEventListener('click', function (e) {
+                                    editModal.show()
+
+                                    let editDate = `${year}-${month + 1}-${editDay}`
+                                    console.log('editday:' + editDate)
+
+                                    eddon1DOM.value = editDate
+                                    eddon2DOM.value = item.title
+                                    eddon3DOM.value = item.content
+                                    eddon1DOM.setAttribute('data-index', index)
+
+                                    e.stopPropagation() //停止冒泡事件
+                                })
+
+
+                                ulDOM.append(liDOM)
+                            })
+                            tdDOM.append(ulDOM)
+                        }
                         tdDOM.addEventListener('click', tdClick.bind(null, year, month, day))
 
                         day++
                     }
+                    
+                    else if (day > dateOfMonth) 
+        
+                         if(nextMonthDate < allDays-dateOfMonth){
+                        tdDOM.classList.add('text-secondary')
+                        tdDOM.innerText = nextMonthDate
+                        nextMonthDate++
 
-
+                    }
                     trDOM.append(tdDOM)
                 }
                 tbodyDOM.append(trDOM)
@@ -303,6 +401,8 @@
         function tdClick(year, month, day) {
             addon1DOM.value = `${year}-${month + 1}-${day}`
             addModal.show()
+            addon2DOM.value=''
+            addon3DOM.value=''
 
             //取日期 寫到 modal的input value
         }
