@@ -386,7 +386,7 @@
                     
                     else if (day > dateOfMonth) 
         
-                         if(nextMonthDate < allDays-dateOfMonth){
+                         if(nextMonthDate <= weeks*7-allDays){
                         tdDOM.classList.add('text-secondary')
                         tdDOM.innerText = nextMonthDate
                         nextMonthDate++
