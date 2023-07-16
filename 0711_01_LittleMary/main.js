@@ -4,7 +4,7 @@ let brickData = [
         img: 'pic/bread.png',
         fraction: 10,
         target: function () { // target 踩到做事情
-            return 'bread'
+            return 'Bread'
         }
     },
     {
@@ -12,7 +12,7 @@ let brickData = [
         img: 'pic/burger.png',
         fraction: 10,
         target: function () {
-            return 'burger'
+            return 'Burger'
         }
     },
     {
@@ -20,7 +20,7 @@ let brickData = [
         img: 'pic/cookie.png',
         fraction: 10,
         target: function () {
-            return 'cookie'
+            return 'Cookie'
         }
     },
     {
@@ -28,7 +28,7 @@ let brickData = [
         img: 'pic/cupnoddle.png',
         fraction: 10,
         target: function () {
-            return 'cupnoddle'
+            return 'Cup noddle'
         }
     },
     {
@@ -36,7 +36,7 @@ let brickData = [
         img: 'pic/dimsum.png',
         fraction: 10,
         target: function () {
-            return 'dimsum'
+            return 'Dim Sum'
         }
     },
     {
@@ -44,7 +44,7 @@ let brickData = [
         img: 'pic/egg.png',
         fraction: 10,
         target: function () {
-            return 'egg'
+            return 'Egg'
         }
     },
     {
@@ -52,7 +52,7 @@ let brickData = [
         img: 'pic/fruit.png',
         fraction: 10,
         target: function () {
-            return 'fruit'
+            return 'Fruit'
         }
     },
     {
@@ -60,7 +60,7 @@ let brickData = [
         img: 'pic/jpnoddle.png',
         fraction: 10,
         target: function () {
-            return 'jpnoddle'
+            return 'Ramen'
         }
     },
     {
@@ -68,7 +68,7 @@ let brickData = [
         img: 'pic/McDonald.png',
         fraction: 10,
         target: function () {
-            return 'MacDonald'
+            return 'MacDonald\'s'
         }
     },
     {
@@ -76,7 +76,7 @@ let brickData = [
         img: 'pic/noddle.png',
         fraction: 10,
         target: function () {
-            return 'noddle'
+            return 'Noddle'
         }
     },
     {
@@ -84,7 +84,7 @@ let brickData = [
         img: 'pic/pizza.png',
         fraction: 10,
         target: function () {
-            return 'pizza'
+            return 'Pizza'
         }
     },
     {
@@ -92,7 +92,7 @@ let brickData = [
         img: 'pic/rice.png',
         fraction: 10,
         target: function () {
-            return 'rice'
+            return 'Rice'
         }
     },
     {
@@ -100,7 +100,7 @@ let brickData = [
         img: 'pic/sandwich.png',
         fraction: 10,
         target: function () {
-            return 'sandwich'
+            return 'Sandwich'
         }
     },
     {
@@ -108,7 +108,7 @@ let brickData = [
         img: 'pic/steak.png',
         fraction: 10,
         target: function () {
-            return 'steak'
+            return 'Steak'
         }
     },
     {
@@ -116,7 +116,7 @@ let brickData = [
         img: 'pic/sushi.png',
         fraction: 10,
         target: function () {
-            return 'sushi'
+            return 'Sushi'
         }
     },
     {
@@ -124,7 +124,7 @@ let brickData = [
         img: 'pic/sweets.png',
         fraction: 10,
         target: function () {
-            return 'sweets'
+            return 'Sweets'
         }
     },
     {
@@ -132,7 +132,7 @@ let brickData = [
         img: 'pic/bread.png',
         fraction: 10,
         target: function () {
-            return 'bread'
+            return 'Bread'
         }
     },
     {
@@ -140,7 +140,7 @@ let brickData = [
         img: 'pic/burger.png',
         fraction: 10,
         target: function () {
-            return 'burger'
+            return 'Burger'
         }
     },
     {
@@ -148,7 +148,7 @@ let brickData = [
         img: 'pic/cookie.png',
         fraction: 10,
         target: function () {
-            return 'cookie'
+            return 'Cookie'
         }
     },
     {
@@ -156,7 +156,7 @@ let brickData = [
         img: 'pic/cupnoddle.png',
         fraction: 10,
         target: function () {
-            return 'cupnoddle'
+            return 'Cup noddle'
         }
     },
     {
@@ -164,7 +164,7 @@ let brickData = [
         img: 'pic/dimsum.png',
         fraction: 10,
         target: function () {
-            return 'dimsum'
+            return 'Dim Sum'
         }
     },
     {
@@ -172,7 +172,7 @@ let brickData = [
         img: 'pic/egg.png',
         fraction: 10,
         target: function () {
-            return 'egg'
+            return 'Egg'
         }
     },
     {
@@ -180,7 +180,7 @@ let brickData = [
         img: 'pic/fruit.png',
         fraction: 10,
         target: function () {
-            return 'fruit'
+            return 'Fruit'
         }
     },
     {
@@ -188,7 +188,7 @@ let brickData = [
         img: 'pic/jpnoddle.png',
         fraction: 10,
         target: function () {
-            return 'jpnoddle'
+            return 'Ramen'
         }
     },
     {
@@ -196,7 +196,7 @@ let brickData = [
         img: 'pic/McDonald.png',
         fraction: 10,
         target: function () {
-            return 'MacDonald'
+            return 'MacDonal\'s'
         }
     },
     {
@@ -204,7 +204,7 @@ let brickData = [
         img: 'pic/noddle.png',
         fraction: 10,
         target: function () {
-            return 'noddle'
+            return 'Noddle'
         }
     },
     {
@@ -212,7 +212,7 @@ let brickData = [
         img: 'pic/pizza.png',
         fraction: 10,
         target: function () {
-            return 'pizza'
+            return 'Pizza'
         }
     },
     {
@@ -220,7 +220,7 @@ let brickData = [
         img: 'pic/rice.png',
         fraction: 10,
         target: function () {
-            return 'rice'
+            return 'Rice'
         }
     },
     {
@@ -228,7 +228,7 @@ let brickData = [
         img: 'pic/sandwich.png',
         fraction: 10,
         target: function () {
-            return 'sandwich'
+            return 'Sandwich'
         }
     },
     {
@@ -236,7 +236,7 @@ let brickData = [
         img: 'pic/steak.png',
         fraction: 10,
         target: function () {
-            return 'steak'
+            return 'Steak'
         }
     },
     {
@@ -244,7 +244,7 @@ let brickData = [
         img: 'pic/sushi.png',
         fraction: 10,
         target: function () {
-            return 'sushi'
+            return 'Sushi'
         }
     },
     {
@@ -252,34 +252,78 @@ let brickData = [
         img: 'pic/sweets.png',
         fraction: 10,
         target: function () {
-            return 'sweets'
+            return 'Sweets'
         }
     },
 ]
 
-
+//Variable Declaration
+let steps = 0 //剩餘步數
+let allStep = 0 //全部步數
+let currentIdx = 0 //目前走到哪一格
+let speed //速率 
+let bricks 
 window.onload = function () {
     renderBrick();
+    gameStart()
 }
 
 
 function renderBrick() {
-    let bricks = document.querySelectorAll('[box-id]')
-
-    // bricks = Array.from(bricks).sort((a, b) => { return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value })
-    brickData.forEach(function ({ id: boxId, img: imgSrc}) {
+    brickData.forEach(function ({ id: boxId, img: imgSrc }) {
 
         let targetElement = document.querySelector('[box-id="' + boxId + '"]');
         let imgElement = document.createElement('img');
+        imgElement.classList.add('w-100', 'p-1')
         imgElement.src = imgSrc;
         targetElement.appendChild(imgElement);
     });
+}
 
+function gameStart(){
+bricks = document.querySelectorAll('[box-id]')
+bricks = Array.from(bricks).sort((a, b) => { return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value })
+console.log(bricks)
 
+document.querySelector('.btn').addEventListener('click', function () {
+    speed = 50
 
+    let random = Math.floor(Math.random() * brickData.length) + 1;
+    steps = random + (3 + bricks.length);
+    allStep = steps
+    turnAround();
+})
+}
 
+function turnAround(){
+    bricks[currentIdx].classList.remove('active')
+    currentIdx++
+    if(currentIdx>=bricks.length){ currentIdx = 0}
+   
+    bricks[currentIdx].classList.add('active');
+    steps--
 
-
-
-
+    //一般版本
+    // if(steps >0){
+    //     setTimeout(turnAround,speed)
+    // }
+    // else{
+    //     let msgBox = document.getElementById('msg')
+    //     let val = brickData[currentIdx].target()
+    //     msgBox.innerText = `Eat  ${val}`
+    // }
+    
+    //變速版本
+    if(steps>0){
+        setTimeout(turnAround,speed)
+        if(steps< Math.floor((allStep/3))){
+            speed +=4
+        }
+        console.log(speed)
+    }
+    else{
+        let msgBox = document.getElementById('msg')
+        let val = brickData[currentIdx].target()
+        msgBox.innerText = `Eat  ${val}`
+    }
 }

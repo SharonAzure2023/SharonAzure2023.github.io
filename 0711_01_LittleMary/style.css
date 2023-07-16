@@ -7,9 +7,18 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    transition: 0.2s;
 }
-button{
-    width: 150px;
-    height: 80px;
-    font-size: 80px;
+
+#msg{
+    font-size: 36px;
+    text-align: center;
+    color:cornflowerblue;
+}
+
+[box-id].active{
+    /* padding: 3px; */
+    border: solid 5px cornflowerblue;;
+    box-shadow: 0 0 10px cornflowerblue;;
+    transition:  0s;
 }
