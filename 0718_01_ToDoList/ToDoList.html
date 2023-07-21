@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+                <h1 class="text-center mb-3">ToDo List</h1>
+                <div class="input-group mb-3">
+                    <input type="text" id="inputTask" class="form-control" placeholder="Input your To Do" aria-label=""
+                        aria-describedby="button-addon2">
+                    <button class="btn btn btn-primary" type="button" id="button-addon">新增</button>
+                </div>
+                <div class="wrap">
+                    <div class="col-12" id="todoList">
+                        <!-- <div class="input-group item mt-2">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox" id="check">
+                            </div>
+                            <input disabled type="text" class="form-control itemInput"
+                                aria-label="Text input with checkbox">
+                            <button class="btn edit btn-warning" type="button">編輯</button>
+                            <button class="btn delete btn-danger " type="button">刪除</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        //Declare
+        let todos = []
+
+        window.onload = function () {
+            if (localStorage.getItem("todos")) {
+                todos = JSON.parse(localStorage.getItem("todos"))
+                renderToDos();
+            };
+        }
+
+        //DOM
+        let addBtn = document.getElementById('button-addon')
+
+        //新增todo的監聽事件
+        addBtn.addEventListener('click', addToDo)
+
+        //渲染代辦事項列表
+        function renderToDos() {
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = "";
+            let todoItem
+
+            todos.forEach((todo, idx) => {
+                todoItem = document.createElement('div');
+                todoItem.id = `todo_${idx}`;
+                todoItem.className = 'input-group item mt-2';
+
+                const todoGroup = document.createElement('div');
+                todoGroup.className = 'input-group-text';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'form-check-input mt-0';
+                checkbox.checked = todo.isCompleted;
+                checkbox.addEventListener('click', () => checkCompleted(idx));
+                todoGroup.appendChild(checkbox);
+                todoItem.appendChild(todoGroup);
+
+                const todoText = document.createElement('input');
+                todoText.type = 'text';
+                todoText.value = todo.content;
+                todoText.setAttribute("disabled", true);
+                if (todo.isCompleted == true) {
+                    todoText.className = 'form-control itemInput bg-secondary bg-opacity-50';
+                } else {
+                    todoText.className = 'form-control itemInput bg-info bg-opacity-10'
+                };
+                todoItem.appendChild(todoText);
+
+                const editBtn = document.createElement('button');
+                editBtn.textContent = '編輯'
+                editBtn.type = 'button';
+                editBtn.className = 'btn editBtn btn-warning';
+                editBtn.addEventListener('click', () => editToDo(idx));
+                todoItem.appendChild(editBtn);
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = '刪除'
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'btn delBtn btn-danger';
+                deleteBtn.addEventListener('click', () => deleteToDo(idx));
+                todoItem.appendChild(deleteBtn);
+
+                todoList.append(todoItem)
+            })
+        }
+
+        //新增代辦事項
+        function addToDo() {
+            const todoInput = document.getElementById('inputTask');
+            const todoStr = todoInput.value.trim();
+            if (todoStr === "") {
+                alert("請輸入代辦事項")
+                return;
+            };
+            let todo = {
+                content: todoStr,
+                isCompleted: false,
+            };
+            todos.push(todo)
+            localStorage.setItem("todos", JSON.stringify(todos));
+            todoInput.value = "";
+            renderToDos();
+
+        }
+
+        //編輯代辦事項
+        function editToDo(idx) {
+            const todo = todos[idx];
+            const todoElement = document.getElementById(`todo_${idx}`);
+
+            if (!todo.isCompleted) {
+                const todoText = todoElement.querySelector('.itemInput');
+                todoText.contentEditable = true;
+                todoText.disabled = false;
+                todoText.focus();
+
+                //編輯按鈕改成保存按鈕
+                const editBtn = todoElement.querySelector('.editBtn');
+                editBtn.classList.remove('btn-warning')
+                editBtn.classList.add('btn-success')
+                editBtn.textContent = "保存";
+                editBtn.removeEventListener("click", editToDo);
+                editBtn.addEventListener('click', () => saveToDoChange(idx));
+            }
+        }
+
+        //儲存修改
+        function saveToDoChange(idx) {
+            const todoElement = document.getElementById(`todo_${idx}`);
+            const todoText = todoElement.querySelector('.itemInput').value.trim();
+            if (todoText !== "") {
+                todos[idx].content = todoText;
+                localStorage.setItem("todos", JSON.stringify(todos));
+            }
+            renderToDos();
+        }
+
+        //刪除
+        function deleteToDo(idx) {
+            todos.splice(idx, 1);
+            localStorage.setItem("todos", JSON.stringify(todos));
+            renderToDos();
+        }
+
+        //check完成
+        function checkCompleted(idx) {
+            todos[idx].isCompleted = !todos[idx].isCompleted;
+            localStorage.setItem("todos", JSON.stringify(todos));
+
+            renderToDos();
+        }
+
+    </script>
+</body>
+
+</html>
